@@ -1,0 +1,55 @@
+# Default values for variables
+
+---
+
+# Enable or disable tasks
+fedora_upgrade_packages: true
+fedora_configure_packages: true
+fedora_configure_services: true
+fedora_configure_kernel_modules: true
+fedora_configure_smartd: true
+fedora_configure_firewalld: true
+
+fedora_hostname: ''
+fedora_timezone: ''
+
+# Packages
+fedora_packages: {}
+# - name: neovim
+#   state: present
+# - name: 
+#     - ncdu
+#     - htop
+#   state: present
+# - name: rhythmbox
+#   state: absent
+
+# Systemd services
+fedora_services: []
+# - name: firewalld
+#   state: started
+#   enabled: true
+
+# Kernel modules to enable
+fedora_kernel_modules: []
+# - name: i2c-dev
+#   state: present
+
+# S.M.A.R.T. options added to smartd.conf
+fedora_smartd_options: []
+# - option: DEVICESCAN -a -o on -S on
+#   state: present
+
+# Named services to allow through firewalld
+fedora_firewalld_services: []
+# - name: ssh
+#   state: enabled
+#   immediate: true
+#   permanent: true
+
+# Ports to allow through firewalld
+fedora_firewalld_ports: []
+# - port: 80/tcp
+#   state: enabled
+#   immediate: true
+#   permanent: true

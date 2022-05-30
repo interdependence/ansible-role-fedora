@@ -1,0 +1,17 @@
+# Metadata
+
+---
+
+galaxy_info:
+  role_name: fedora
+  author: William Vandervalk
+  description: Basic configuration for Fedora
+  license: MIT
+  platforms:
+    - name: Fedora
+      versions:
+        - all
+  galaxy_tags:
+    - Fedora
+    - Workstation
+    - Server

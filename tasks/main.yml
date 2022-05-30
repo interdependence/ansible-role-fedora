@@ -1,0 +1,31 @@
+# Configure Fedora base system
+
+---
+
+- name: Ensure hostname is configured
+  ansible.builtin.hostname:
+    name: '{{ fedora_hostname }}'
+    use: systemd
+  become: true
+  when: fedora_hostname
+
+- name: Ensure timezone is configured
+  community.general.timezone:
+    name: '{{ fedora_timezone }}'
+  become: true
+  when: fedora_timezone
+
+- include_tasks: packages.yml
+  when: fedora_configure_packages
+
+- include_tasks: services.yml
+  when: fedora_configure_services
+
+- include_tasks: kernel-modules.yml
+  when: fedora_configure_kernel_modules
+
+- include_tasks: smartd.yml
+  when: fedora_configure_smartd
+
+- include_tasks: firewalld.yml
+  when: fedora_configure_firewalld

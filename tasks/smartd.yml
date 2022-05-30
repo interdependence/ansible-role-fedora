@@ -1,0 +1,25 @@
+# Ensure S.M.A.R.T. monitoring is configured
+
+---
+
+- name: Ensure smartmontools is installed
+  ansible.builtin.dnf:
+    name: smartmontools
+    state: present
+  become: true
+
+- name: Ensure S.M.A.R.T. monitoring is configured
+  ansible.builtin.lineinfile:
+    path: /etc/smartmontools/smartd.conf
+    line: '{{ item.option }}'
+    state: '{{ item.state | default("present") }}'
+    insertbefore: BOF
+  become: true
+  loop: '{{ fedora_smartd_options }}'
+
+- name: Ensure S.M.A.R.T. systemd service is configured
+  ansible.builtin.service:
+    name: smartd
+    state: started
+    enabled: true
+  become: true

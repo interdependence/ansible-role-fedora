@@ -1,0 +1,11 @@
+# Ensure systemd services are configured
+
+---
+
+- name: Ensure systemd services are configured
+  ansible.builtin.systemd:
+    name: '{{ item.name }}'
+    state: '{{ item.state | default("started") }}'
+    enabled: '{{ item.enabled | default(true) }}'
+  become: true
+  loop: '{{ fedora_services }}'

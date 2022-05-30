@@ -1,0 +1,34 @@
+# Ensure firewalld is configured
+
+---
+
+- name: Ensure firewalld is installed
+  ansible.builtin.dnf:
+    name: firewalld
+    state: present
+  become: true
+
+- name: Ensure firewalld systemd service is configured
+  ansible.builtin.service:
+    name: firewalld.service
+    state: started
+    enabled: true
+  become: true
+
+- name: Allow required services through firewall
+  ansible.posix.firewalld:
+    service: '{{ item.name }}'
+    state: '{{ item.state | default("enabled") }}'
+    immediate: '{{ item.immediate | default(true) }}'
+    permanent: '{{ item.permanent | default(true) }}'
+  become: true
+  loop: '{{ fedora_firewalld_services }}'
+
+- name: Allow required ports through firewall
+  ansible.posix.firewalld:
+    port: '{{ item.port }}'
+    state: '{{ item.state | default("enabled") }}'
+    immediate: '{{ item.immediate | default(true) }}'
+    permanent: '{{ item.permanent | default(true) }}'
+  become: true
+  loop: '{{ fedora_firewalld_ports }}'
