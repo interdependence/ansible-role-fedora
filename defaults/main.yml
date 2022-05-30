@@ -15,8 +15,10 @@ fedora_timezone: ''
 
 # Packages
 fedora_packages: {}
+# # Individual package
 # - name: neovim
 #   state: present
+# # List of packages
 # - name: 
 #     - ncdu
 #     - htop
@@ -27,7 +29,10 @@ fedora_packages: {}
 # Systemd services
 fedora_services: []
 # - name: firewalld
+#   Optional, defaults to true
 #   state: started
+#
+#   Optional, defaults to true
 #   enabled: true
 
 # Kernel modules to enable
@@ -43,13 +48,23 @@ fedora_smartd_options: []
 # Named services to allow through firewalld
 fedora_firewalld_services: []
 # - name: ssh
+#   Optional, defaults to true
 #   state: enabled
+#
+#   # Optional, defaults to true
 #   immediate: true
+#
+#   # Optional, defaults to true
 #   permanent: true
 
 # Ports to allow through firewalld
 fedora_firewalld_ports: []
 # - port: 80/tcp
+#   Optional, defaults to true
 #   state: enabled
+#
+#   # Optional, defaults to true
 #   immediate: true
+#
+#   # Optional, defaults to true
 #   permanent: true
