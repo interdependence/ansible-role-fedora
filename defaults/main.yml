@@ -19,7 +19,7 @@ fedora_packages: {}
 # - name: neovim
 #   state: present
 # # List of packages
-# - name: 
+# - name:
 #     - ncdu
 #     - htop
 #   state: present
