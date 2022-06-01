@@ -69,7 +69,7 @@ fedora_packages:
 ```yaml
 fedora_services:
   - name: firewalld
-    # Optional, defaults to true
+    # Optional, defaults to started
     state: started
 
     # Optional, defaults to true
@@ -112,7 +112,7 @@ fedora_smartd_options:
 ```yaml
 fedora_firewalld_services:
   - name: ssh
-    # Optional, defaults to true
+    # Optional, defaults to enabled
     state: enabled
 
     # Optional, defaults to true
@@ -132,7 +132,7 @@ fedora_firewalld_services:
 ```yaml
 fedora_firewalld_ports:
   - port: 80/tcp
-    # Optional, defaults to true
+    # Optional, defaults to enabled
     state: enabled
 
     # Optional, defaults to true

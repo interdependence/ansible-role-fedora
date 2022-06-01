@@ -14,7 +14,7 @@ fedora_hostname: ''
 fedora_timezone: ''
 
 # Packages
-fedora_packages: {}
+fedora_packages: []
 # # Individual package
 # - name: neovim
 #   state: present
