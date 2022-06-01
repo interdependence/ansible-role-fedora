@@ -7,13 +7,13 @@
     name: '{{ fedora_hostname }}'
     use: systemd
   become: true
-  when: fedora_hostname
+  when: fedora_configure_hostname and fedora_hostname
 
 - name: Ensure timezone is configured
   community.general.timezone:
     name: '{{ fedora_timezone }}'
   become: true
-  when: fedora_timezone
+  when: fedora_configure_timezone and fedora_timezone
 
 - include_tasks: packages.yml
   when: fedora_configure_packages

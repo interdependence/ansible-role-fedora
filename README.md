@@ -2,6 +2,8 @@
 
 An Ansible role to perform basic configuration for [Fedora Workstation] or [Fedora Server].
 
+For configuring [Fedora Workstation], use with: [ansible-role-fedora-workstation].
+
 ## Role Variables
 
 <table>
@@ -12,6 +14,16 @@ An Ansible role to perform basic configuration for [Fedora Workstation] or [Fedo
 </tr>
 <tr>
 <td>fedora_upgrade_packages</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>fedora_configure_hostname</td>
+<td>true</td>
+<td>false</td>
+</tr>
+<tr>
+<td>fedora_configure_timezone</td>
 <td>true</td>
 <td>false</td>
 </tr>
@@ -39,6 +51,16 @@ An Ansible role to perform basic configuration for [Fedora Workstation] or [Fedo
 <td>fedora_configure_firewalld</td>
 <td>true</td>
 <td>false</td>
+</tr>
+<tr>
+<td>fedora_hostname</td>
+<td>' '</td>
+<td>fedora</td>
+</tr>
+<tr>
+<td>fedora_timezone</td>
+<td>' '</td>
+<td>America/New_York</td>
 </tr>
 <tr>
 <td>fedora_packages</td>
@@ -153,15 +175,17 @@ Where `state` is set to `present` in each role variable, the default value is `p
 ## Example Playbook
 
 ```yaml
-# Configure Fedora Workstation
+# Configure Fedora
 
 ---
 
 - name: Configure Fedora
-  hosts: workstations
+  hosts: fedora
   roles:
     - role: interdependence.fedora
       vars:
+        fedora_hostname: fedora
+        fedora_timezone: America/New_York
         fedora_packages:
           - name:
               - neovim
@@ -190,3 +214,4 @@ Where `state` is set to `present` in each role variable, the default value is `p
 
 [Fedora Workstation]: https://getfedora.org/en/workstation/
 [Fedora Server]: https://getfedora.org/en/server/
+[ansible-role-fedora-workstation]: https://github.com/interdependence/ansible-role-fedora-workstation

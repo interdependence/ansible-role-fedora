@@ -4,6 +4,8 @@
 
 # Enable or disable tasks
 fedora_upgrade_packages: true
+fedora_configure_hostname: true
+fedora_configure_timezone: true
 fedora_configure_packages: true
 fedora_configure_services: true
 fedora_configure_kernel_modules: true
